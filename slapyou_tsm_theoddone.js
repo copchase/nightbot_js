@@ -26,6 +26,7 @@ function slapyou(from, to) {
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
     let regex = /^(.*odd|.*awd|.*god)(?=_*one.*|._*juan.*|_*wan.*)/i;
+    let oddone = from.toLowerCase() === "tsm_theoddone";
 
     if (from === to) {
         return "ERROR: You cannot attempt to intentionally slap yourself PepeLaugh ";
@@ -41,7 +42,7 @@ function slapyou(from, to) {
 
     let exp = Math.round(Math.random() * 999 + 1);
 
-    if (Math.random() < 0.5 || imposters.includes(from.toLowerCase())) {
+    if (!oddone && (Math.random() < 0.5 || imposters.includes(from.toLowerCase()))) {
         if (crit) {
             return String.format("{0} slaps themselves in confusion, losing {1} EXP! {2}", from, critexp.toString(), badcrit[Math.floor(Math.random() * badcrit.length)]);
         } else {
