@@ -1,6 +1,4 @@
-/* !slapyou by copchase for tsm_theoddone */
 /* Use blocks for comments, Nightbot likes it this way */
-/* TEST COMMENT */
 
 /* Any accounts similar to OddOne's name have a 100% failure rate using !slapyou */
 const imposters = ["tsmthegodone"];
@@ -25,7 +23,7 @@ function slapyou(from, to) {
     
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
-    let regex = /^(.*odd|.*awd|.*god)(?=_*one.*|._*juan.*|_*wan.*)/i;
+    let regex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan)(.*)$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
 
     if (from === to) {
