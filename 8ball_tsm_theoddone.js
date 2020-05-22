@@ -141,7 +141,7 @@ const responses = [
 /* Be me, rip shit from StackOverflow because I don't feel like coming
 up with this myself */
 function weighted_pick(response_type) {
-  // Get the total, and make the weights cummulative
+  /* Get the total, and make the weights cummulative */
   var total = response_type.reduce(function(sum, item){
       item.weight = item.weight + sum;
       return item.weight;
@@ -149,7 +149,7 @@ function weighted_pick(response_type) {
 
   var r = Math.random() * total;
 
-  // Can't use .forEach() here because we want early termination
+  /* Can't use .forEach() here because we want early termination */
   for (var i = 0; i < response_type.length; i++) {
        if (r < response_type[i].weight)
            return response_type[i].response;
