@@ -112,7 +112,8 @@ const not_doing_my_job = [
   },
   {
     response: "8Ball has encountered a fatal error and needs to shut down.",
-    weight: 25}
+    weight: 25
+  },
   {
     response: "🖕",
     weight: 10
