@@ -1,16 +1,20 @@
-/* Rigged 8Ball for tsm_theoddone */
-/* Written by copchase */
-
-/* When rigging, larger weight = more likely. Only rig responses;
-do **not** rig probabilities of positive/negative responses. */
-
-/* Current probabilities:
-  42.5% Positive
-  42.5% Negative
-  10% Not Doing My Job
-  5% Neutral
-*/
-
+/** !8ball
+ * Rigged 8Ball for tsm_theoddone
+ * 
+ * Contributors:
+ * copchase
+ * sapphison
+ *
+ * When rigging, larger weight = more likely. Only rig responses;
+ * Do **not** rig probabilities of positive/negative responses.
+ *
+ * Current probabilities:
+ * 42.5% Positive
+ * 42.5% Negative
+ * 10% Not Doing My Job
+ * 5% Neutral
+ * 
+ */
 
 /* Neutral responses: current weight total 100 */
 const neutral = [
@@ -120,32 +124,15 @@ const not_doing_my_job = [
   },
 ];
 
-/* Old constant var_array
-
-const responses = [
-    "My sources say nope.",
-    "Very doubtful.",
-    "Don\"t count on it.",
-    "What kind of question is that? FeelsWeirdMan 👉 🚪",
-    "Stop asking me stupid questions AYAYAWeird ",
-    "I\'m going to leave before you ask any more idiotic questions peepoLeave",
-    "Yes, definitely!",
-    "It is certain!",
-    "Most likely.",
-    "Outlook good.",
-    "All signs point to yes...",
-    "It is decidedly so!",
-];
-*/
-
 /* Be me, rip shit from StackOverflow because I don't feel like coming
 up with this myself */
 function weighted_pick(response_type) {
   /* Get the total, and make the weights cummulative */
-  var total = response_type.reduce(function(sum, item){
+  var total = response_type.reduce(function(sum, item) {
       item.weight = item.weight + sum;
       return item.weight;
-  },0);
+  }
+  , 0);
 
   var r = Math.random() * total;
 
@@ -173,3 +160,21 @@ function eightball() {
 }
 
 eightball();
+
+/* Old constant var_array
+
+const responses = [
+    "My sources say nope.",
+    "Very doubtful.",
+    "Don\"t count on it.",
+    "What kind of question is that? FeelsWeirdMan 👉 🚪",
+    "Stop asking me stupid questions AYAYAWeird ",
+    "I\'m going to leave before you ask any more idiotic questions peepoLeave",
+    "Yes, definitely!",
+    "It is certain!",
+    "Most likely.",
+    "Outlook good.",
+    "All signs point to yes...",
+    "It is decidedly so!",
+];
+*/
