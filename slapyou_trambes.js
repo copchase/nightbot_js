@@ -1,3 +1,11 @@
+/** !slapyou
+ * !slapyou for trambes
+ * 
+ * Contributors:
+ * copchase
+ * 
+ */
+
 function slapyou(from, to) {
 	var out;
 	var exp = Math.round(Math.random() * 999 + 1);
