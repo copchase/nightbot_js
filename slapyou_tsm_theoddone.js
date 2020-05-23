@@ -48,7 +48,7 @@ function slapyou(from, to) {
 
     let exp = Math.round(Math.random() * 999 + 1);
 
-    if (!oddone && (Math.random() < 0.5 || imposters.includes(from.toLowerCase()))) {
+    if (!oddone && (Math.random() <= 0.2 || imposters.includes(from.toLowerCase()))) {
         if (crit) {
             return String.format("{0} slaps themselves in confusion, losing {1} EXP! {2}", from, critexp.toString(), badcrit[Math.floor(Math.random() * badcrit.length)]);
         } else {

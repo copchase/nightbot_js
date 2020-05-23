@@ -62,7 +62,7 @@ const neutral = [
         ]
     },
     {
-        response: "Umm...sorry, lemme get back to you on that, 2 hours max",
+        response: "Umm... sorry. Let me get back to you on that, 2 hours max",
         weight: 25,
         suffix: [
             " Kappa ",
@@ -227,7 +227,7 @@ const positive = [
     },
 ];
 
-/* Negative responses: current weight total 255 */
+/* Negative responses: current weight total 295 */
 const negative = [
     {
         response: "My sources say nope",
@@ -275,6 +275,13 @@ const negative = [
         ]
     },
     {
+        response: "No. - Merrx 2020",
+        weight: 40,
+        suffix: [
+            ""
+        ]
+    },
+    {
         response: "Imagine thinking that\'ll happen",
         weight: 30,
         suffix: [
@@ -297,7 +304,7 @@ const negative = [
         ]
     },
     {
-        response: "What a funny joke...oh wait, you weren\'t joking",
+        response: "What a funny joke... oh wait, you weren\'t joking",
         weight: 10,
         suffix: [
             " PepeLaugh ",
@@ -320,7 +327,7 @@ const negative = [
     },
 ];
 
-/* "Screw you" responses: current weight total 250 */
+/* "Screw you" responses: current weight total 275 */
 const not_doing_my_job = [
     {
         response: "What kind of question is that?",
@@ -392,6 +399,14 @@ const not_doing_my_job = [
             " oddoneOKO ",
             " oddoneWeird ",
             " peepoMad ",
+        ]
+    },
+    {
+        response: "Who cares? Invest in OddCoin instead!",
+        weight: 25,
+        suffix: [
+            " oddoneW ",
+            " RainbowDaijoubu "
         ]
     },
     {
