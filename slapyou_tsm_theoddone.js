@@ -1,5 +1,13 @@
 /* Use blocks for comments, Nightbot likes it this way */
 
+/** !slapyou
+ * !slapyou for tsm_theoddone
+ * 
+ * Contributors:
+ * copchase
+ * 
+ */
+
 /* Any accounts similar to OddOne's name have a 100% failure rate using !slapyou */
 const imposters = ["tsmthegodone"];
 const immuneresponse = ["Treason shall not be tolerated oddoneVillain ", "You fools! TheOddOne cannot be touched oddoneW", "TheOddOne is far too powerful to be slapped oddoneBakana"];
