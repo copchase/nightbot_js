@@ -31,14 +31,15 @@ function slapyou(from, to) {
     
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
-    let regex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan)(.*)$/i;
+    let oddone_regex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan)(.*)$/i;
+    let self_regex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
 
-    if (from === to) {
+    if (from === to | !(to.match(self_regex) === null)) {
         return "ERROR: You cannot attempt to intentionally slap yourself PepeLaugh ";
     }
 
-    if (!(to.match(regex) === null)) {
+    if (!(to.match(oddone_regex) === null)) {
         if (crit) {
             return String.format("{0} attempted to slap TheOddOne, but was struck down and lost {1} EXP! oddoneVillain ", from, critexp.toString());
         } else {
