@@ -52,7 +52,7 @@ function slapyou(from, to) {
     leetMap.set(/_\|/g, "J");
     leetMap.set(/\|_/g, "L");
     leetMap.set(/1/g, "L"); */
-    leetMap.set(/0|[\(\[\{\<][\)\]\}\>]/, "O");
+    leetMap.set(/0|[\(\[\{\<][\)\]\}\>]/g, "O");
     leetMap.set(/[\u0418\u0438]|((\||\/|l|I)\\+(\||\/|l|I))|(\/V)|(\]\[\\+]\[)/g, "N");
     /* leetMap.set(/5/g, "S"); */
     leetMap.set(/(7`?)|\+|(['`~-](\|+|(\]\[))['`~-])/g, "T");
