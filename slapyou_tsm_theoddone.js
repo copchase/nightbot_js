@@ -31,7 +31,7 @@ function slapyou(from, to) {
     
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
-    let oddone_regex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan)(.*)$/i;
+    let oddone_regex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun)(.*)$/i;
     let self_regex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
 
