@@ -36,50 +36,29 @@ function slapyou(from, to) {
     let oddone = from.toLowerCase() === "tsm_theoddone";
 
     let leetMap = new Map();
-    leetMap.set(/4/g, "A");
-    leetMap.set(/\/\\/g, "A");
-    leetMap.set(/@/g, "A");
-    leetMap.set(/\^/g, "A");
-
+    leetMap.set(/4|(\/[-_=+]+\\)|@|\^/g, "A");
     leetMap.set(/13/g, "B");
     leetMap.set(/\/3/g, "B");
     leetMap.set(/\|3/g, "B");
     leetMap.set(/8/g, "B");
-
-    leetMap.set(/></g, "X");
-
     leetMap.set(/</g, "C");
     leetMap.set(/\(/g, "C");
-
-    leetMap.set(/\|\)/g, "D");
-    leetMap.set(/\|>/g, "D");
-
-    leetMap.set(/3/g, "E");
-
+    leetMap.set(/\|[)}\]>]/g, "D");
+    leetMap.set(/[3\u0395\u03F5\u03B5\u00A3\u20A4\u20AC]/g, "E");
     leetMap.set(/6/g, "G");
-
-    leetMap.set(/\/-\//g, "H");
-    leetMap.set(/\[-\]/g, "H");
-    leetMap.set(/\]-\[/g, "H");
-
+    leetMap.set(/[#4]|([\|\[\]\{\}\/\\\(\)\:I][-=+]+[\|\[\]\{\}\/\\\(\)\:I])|([\}\)][\{\(])/g, "H");
     leetMap.set(/!/g, "I");
-
-    leetMap.set(/\|_/g, "L");
-
     leetMap.set(/_\//g, "J");
     leetMap.set(/_\|/g, "J");
-
+    leetMap.set(/\|_/g, "L");
     leetMap.set(/1/g, "L");
-
-    leetMap.set(/0/g, "O");
-
+    leetMap.set(/0|[\(\[\{\<][\)\]\}\>]/, "O");
+    leetMap.set(/[\u0418\u0438]|((\||\/|l|I)\\+(\||\/|l|I))|(\/V)|(\]\[\\+]\[)/g, "N");
     leetMap.set(/5/g, "S");
-
-    leetMap.set(/7/g, "T");
-
+    leetMap.set(/(7`?)|\+|(['`~-](\|+|(\]\[))['`~-])/g, "T");
     leetMap.set(/\\\/\\\//g, "W");
     leetMap.set(/\\\//g, "V");
-
+    leetMap.set(/></g, "X");
     leetMap.set(/2/g, "Z");
 
     if (from === to | !(to.match(self_regex) === null)) {
