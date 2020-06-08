@@ -35,11 +35,63 @@ function slapyou(from, to) {
     let self_regex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
 
+    let leetMap = new Map();
+    leetMap.set(/4/g, "A");
+    leetMap.set(/\/\\/g, "A");
+    leetMap.set(/@/g, "A");
+    leetMap.set(/\^/g, "A");
+
+    leetMap.set(/13/g, "B");
+    leetMap.set(/\/3/g, "B");
+    leetMap.set(/\|3/g, "B");
+    leetMap.set(/8/g, "B");
+
+    leetMap.set(/></g, "X");
+
+    leetMap.set(/</g, "C");
+    leetMap.set(/\(/g, "C");
+
+    leetMap.set(/\|\)/g, "D");
+    leetMap.set(/\|>/g, "D");
+
+    leetMap.set(/3/g, "E");
+
+    leetMap.set(/6/g, "G");
+
+    leetMap.set(/\/-\//g, "H");
+    leetMap.set(/\[-\]/g, "H");
+    leetMap.set(/\]-\[/g, "H");
+
+    leetMap.set(/!/g, "I");
+
+    leetMap.set(/\|_/g, "L");
+
+    leetMap.set(/_\//g, "J");
+    leetMap.set(/_\|/g, "J");
+
+    leetMap.set(/1/g, "L");
+
+    leetMap.set(/0/g, "O");
+
+    leetMap.set(/5/g, "S");
+
+    leetMap.set(/7/g, "T");
+
+    leetMap.set(/\\\/\\\//g, "W");
+    leetMap.set(/\\\//g, "V");
+
+    leetMap.set(/2/g, "Z");
+
     if (from === to | !(to.match(self_regex) === null)) {
         return "ERROR: You cannot attempt to intentionally slap yourself PepeLaugh ";
     }
 
-    if (!(to.match(oddone_regex) === null)) {
+    let antileet = to;
+    for (let [key, value] of leetMap) {
+        antileet = antileet.replace(key, value);
+    }
+
+    if (!(antileet.match(oddone_regex) === null)) {
         if (crit) {
             return String.format("{0} attempted to slap TheOddOne, but was struck down and lost {1} EXP! oddoneVillain ", from, critexp.toString());
         } else {
