@@ -9,10 +9,27 @@
  */
 
 /* Any accounts similar to OddOne's name have a 100% failure rate using !slapyou */
-const imposters = ["tsmthegodone"];
-const immuneresponse = ["Treason shall not be tolerated oddoneVillain ", "You fools! TheOddOne cannot be touched oddoneW", "TheOddOne is far too powerful to be slapped oddoneBakana"];
-const goodcrit = ["POGGERS", "PogChamp", "PagChomp"];
-const badcrit = ["Pepega", "POOGERS", "FeelsTastyMan", "OMEGALUL", "LUL", "PepeLaugh"];
+const imposters = [
+    "tsmthegodone"
+];
+const immuneresponse = [
+    "Treason shall not be tolerated oddoneVillain ",
+    "You fools! TheOddOne cannot be touched oddoneW",
+    "TheOddOne is far too powerful to be slapped oddoneBakana"
+];
+const goodcrit = [
+    "POGGERS",
+    "PogChamp",
+    "PagChomp"
+];
+const badcrit = [
+    "Pepega",
+    "POOGERS",
+    "FeelsTastyMan",
+    "OMEGALUL",
+    "LUL",
+    "PepeLaugh"
+];
 
 /**
  * C# style String.format
@@ -34,6 +51,13 @@ function slapyou(from, to) {
     let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun)(.*)$/i;
     let selfRegex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
+
+    let emoteRegex = new Map();
+    emoteRegex.set(/(oddone7)|(oddoneAYAYA)|(oddoneBully)|(oddoneChair)|(oddoneClown)|(oddoneCop)/gi, "");
+    emoteRegex.set(/(oddoneCute)|(oddoneDiplomacy)|(oddoneDuel)|(oddoneFE)|(oddoneGhost)|(oddoneGreen)/gi, "");
+    emoteRegex.set(/(oddoneLOL)|(oddoneLick)|(oddoneOKO)|(oddonePOG)|(oddonePat)|(oddoneREE)|(oddoneRIP)/gi, "");
+    emoteRegex.set(/(oddoneShrug)|(oddoneSiSenor)|(oddoneSip)|(oddoneWeird)|(oddoneWel)|(oddAYAYA)|(oddCute)/gi, "");
+    emoteRegex.set(/(oddHYPERS)|(oddoneHeh)|(oddoneSmug)|(oddOwO)|(oddREE)|(oddSip)|(oddSlain)|(oddThump)|(oddWeeb)/gi, "");
 
     let leetMap = new Map();
     /* leetMap.set(/4|(\/[-_=+]+\\)|@|\^/g, "A");
@@ -65,12 +89,16 @@ function slapyou(from, to) {
         return "ERROR: You cannot attempt to intentionally slap yourself PepeLaugh ";
     }
 
-    let antileet = to;
-    for (let [key, value] of leetMap) {
-        antileet = antileet.replace(key, value);
+    let anti = to;
+    for (let [key, value] of emoteRegex) {
+        anti = anti.replace(key, value);
     }
 
-    if (!(antileet.match(oddoneRegex) === null)) {
+    for (let [key, value] of leetMap) {
+        anti = anti.replace(key, value);
+    }
+
+    if (!(anti.match(oddoneRegex) === null)) {
         if (crit) {
             return String.format("{0} attempted to slap TheOddOne, but was struck down and lost {1} EXP! oddoneVillain ", from, critexp.toString());
         } else {
