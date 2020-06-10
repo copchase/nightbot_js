@@ -31,8 +31,8 @@ function slapyou(from, to) {
     
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
-    let oddone_regex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun)(.*)$/i;
-    let self_regex = /^((.*self)|(.*selves))$/i;
+    let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun)(.*)$/i;
+    let selfRegex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
 
     let leetMap = new Map();
@@ -61,7 +61,7 @@ function slapyou(from, to) {
     leetMap.set(/></g, "X");
     leetMap.set(/2/g, "Z"); */
 
-    if (from === to | !(to.match(self_regex) === null)) {
+    if (from === to | !(to.match(selfRegex) === null)) {
         return "ERROR: You cannot attempt to intentionally slap yourself PepeLaugh ";
     }
 
@@ -70,7 +70,7 @@ function slapyou(from, to) {
         antileet = antileet.replace(key, value);
     }
 
-    if (!(antileet.match(oddone_regex) === null)) {
+    if (!(antileet.match(oddoneRegex) === null)) {
         if (crit) {
             return String.format("{0} attempted to slap TheOddOne, but was struck down and lost {1} EXP! oddoneVillain ", from, critexp.toString());
         } else {
