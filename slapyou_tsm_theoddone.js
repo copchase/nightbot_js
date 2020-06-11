@@ -51,13 +51,60 @@ function slapyou(from, to) {
     let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun)(.*)$/i;
     let selfRegex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
+    let splits = to.split(/\s/);
 
-    let emoteRegex = new Map();
-    emoteRegex.set(/(oddone7)|(oddoneAYAYA)|(oddoneBully)|(oddoneChair)|(oddoneClown)|(oddoneCop)/gi, "");
-    emoteRegex.set(/(oddoneCute)|(oddoneDiplomacy)|(oddoneDuel)|(oddoneFE)|(oddoneGhost)|(oddoneGreen)/gi, "");
-    emoteRegex.set(/(oddoneLOL)|(oddoneLick)|(oddoneOKO)|(oddonePOG)|(oddonePat)|(oddoneREE)|(oddoneRIP)/gi, "");
-    emoteRegex.set(/(oddoneShrug)|(oddoneSiSenor)|(oddoneSip)|(oddoneWeird)|(oddoneWel)|(oddAYAYA)|(oddCute)/gi, "");
-    emoteRegex.set(/(oddHYPERS)|(oddoneHeh)|(oddoneSmug)|(oddOwO)|(oddREE)|(oddSip)|(oddSlain)|(oddThump)|(oddWeeb)/gi, "");
+    let emoteSet = new Set();
+    
+    emoteSet.add("oddone7");
+    emoteSet.add("oddoneAYAYA");
+    emoteSet.add("oddoneBully");
+    emoteSet.add("oddoneChair");
+    emoteSet.add("oddoneClown");
+    emoteSet.add("oddoneCop");
+    emoteSet.add("oddoneCute");
+    emoteSet.add("oddoneDiplomacy");
+    emoteSet.add("oddoneDuel");
+    emoteSet.add("oddoneFE");
+    emoteSet.add("oddoneGhost");
+    emoteSet.add("oddoneGreen");
+    emoteSet.add("oddoneLOL");
+    emoteSet.add("oddoneLick");
+    emoteSet.add("oddoneOKO");
+    emoteSet.add("oddonePOG");
+    emoteSet.add("oddonePat");
+    emoteSet.add("oddoneREE");
+    emoteSet.add("oddoneRIP");
+    emoteSet.add("oddoneShrug");
+    emoteSet.add("oddoneSiSenor");
+    emoteSet.add("oddoneSip");
+    emoteSet.add("oddoneWeird");
+    emoteSet.add("oddoneWel");
+    emoteSet.add("oddAYAYA");
+    emoteSet.add("oddCute");
+    emoteSet.add("oddHYPERS");
+    emoteSet.add("oddoneHeh");
+    emoteSet.add("oddoneSmug");
+    emoteSet.add("oddOwO");
+    emoteSet.add("oddREE");
+    emoteSet.add("oddSip");
+    emoteSet.add("oddSlain");
+    emoteSet.add("oddThump");
+    emoteSet.add("oddWeeb");
+
+    for (let idx = 0; idx < splits.length; ++idx) {
+        let curr = splits[idx];
+        if (emoteSet.has(curr)) {
+            splits[idx] = "";
+        }
+    }
+
+    let anti = "";
+
+    splits.forEach(word => {
+        if (word.length > 0) {
+            anti = anti.concat(" " + word);
+        }
+    })
 
     let leetMap = new Map();
     /* leetMap.set(/4|(\/[-_=+]+\\)|@|\^/g, "A");
@@ -87,11 +134,6 @@ function slapyou(from, to) {
 
     if (from === to | !(to.match(selfRegex) === null)) {
         return "ERROR: You cannot attempt to intentionally slap yourself PepeLaugh ";
-    }
-
-    let anti = to;
-    for (let [key, value] of emoteRegex) {
-        anti = anti.replace(key, value);
     }
 
     for (let [key, value] of leetMap) {
