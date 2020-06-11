@@ -51,7 +51,7 @@ function slapyou(from, to) {
     let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun)(.*)$/i;
     let selfRegex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
-    let splits = to.split(/\s/);
+    let splits = to.split(/\s+/);
 
     let emoteSet = new Set();
     
@@ -91,6 +91,8 @@ function slapyou(from, to) {
     emoteSet.add("oddThump");
     emoteSet.add("oddWeeb");
 
+    let anti = "";
+
     for (let idx = 0; idx < splits.length; ++idx) {
         let curr = splits[idx];
         if (emoteSet.has(curr)) {
@@ -98,13 +100,11 @@ function slapyou(from, to) {
         }
     }
 
-    let anti = "";
-
     splits.forEach(word => {
         if (word.length > 0) {
             anti = anti.concat(" " + word);
         }
-    })
+    });
 
     let leetMap = new Map();
     /* leetMap.set(/4|(\/[-_=+]+\\)|@|\^/g, "A");
