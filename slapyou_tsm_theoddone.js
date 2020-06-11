@@ -9,10 +9,27 @@
  */
 
 /* Any accounts similar to OddOne's name have a 100% failure rate using !slapyou */
-const imposters = ["tsmthegodone"];
-const immuneresponse = ["Treason shall not be tolerated oddoneVillain ", "You fools! TheOddOne cannot be touched oddoneW", "TheOddOne is far too powerful to be slapped oddoneBakana"];
-const goodcrit = ["POGGERS", "PogChamp", "PagChomp"];
-const badcrit = ["Pepega", "POOGERS", "FeelsTastyMan", "OMEGALUL", "LUL", "PepeLaugh"];
+const imposters = [
+    "tsmthegodone"
+];
+const immuneresponse = [
+    "Treason shall not be tolerated oddoneVillain ",
+    "You fools! TheOddOne cannot be touched oddoneW",
+    "TheOddOne is far too powerful to be slapped oddoneBakana"
+];
+const goodcrit = [
+    "POGGERS",
+    "PogChamp",
+    "PagChomp"
+];
+const badcrit = [
+    "Pepega",
+    "POOGERS",
+    "FeelsTastyMan",
+    "OMEGALUL",
+    "LUL",
+    "PepeLaugh"
+];
 
 /**
  * C# style String.format
@@ -31,9 +48,63 @@ function slapyou(from, to) {
     
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
-    let oddone_regex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun)(.*)$/i;
-    let self_regex = /^((.*self)|(.*selves))$/i;
+    let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun|wiggle|weeb)(.*)$/i;
+    let selfRegex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
+    let splits = to.split(/\s+/);
+
+    let emoteSet = new Set();
+    
+    emoteSet.add("oddone7");
+    emoteSet.add("oddoneAYAYA");
+    emoteSet.add("oddoneBully");
+    emoteSet.add("oddoneChair");
+    emoteSet.add("oddoneClown");
+    emoteSet.add("oddoneCop");
+    emoteSet.add("oddoneCute");
+    emoteSet.add("oddoneDiplomacy");
+    emoteSet.add("oddoneDuel");
+    emoteSet.add("oddoneFE");
+    emoteSet.add("oddoneGhost");
+    emoteSet.add("oddoneGreen");
+    emoteSet.add("oddoneLOL");
+    emoteSet.add("oddoneLick");
+    emoteSet.add("oddoneOKO");
+    emoteSet.add("oddonePOG");
+    emoteSet.add("oddonePat");
+    emoteSet.add("oddoneREE");
+    emoteSet.add("oddoneRIP");
+    emoteSet.add("oddoneShrug");
+    emoteSet.add("oddoneSiSenor");
+    emoteSet.add("oddoneSip");
+    emoteSet.add("oddoneSleeper");
+    emoteSet.add("oddoneWeird");
+    emoteSet.add("oddoneWel");
+    emoteSet.add("oddAYAYA");
+    emoteSet.add("oddCute");
+    emoteSet.add("oddHYPERS");
+    emoteSet.add("oddoneHeh");
+    emoteSet.add("oddoneSmug");
+    emoteSet.add("oddOwO");
+    emoteSet.add("oddREE");
+    emoteSet.add("oddSip");
+    emoteSet.add("oddSlain");
+    emoteSet.add("oddThump");
+
+    let anti = "";
+
+    for (let idx = 0; idx < splits.length; ++idx) {
+        let curr = splits[idx];
+        if (emoteSet.has(curr)) {
+            splits[idx] = "";
+        }
+    }
+
+    splits.forEach(word => {
+        if (word.length > 0) {
+            anti = anti.concat(" " + word);
+        }
+    });
 
     let leetMap = new Map();
     /* leetMap.set(/4|(\/[-_=+]+\\)|@|\^/g, "A");
@@ -61,16 +132,15 @@ function slapyou(from, to) {
     leetMap.set(/></g, "X");
     leetMap.set(/2/g, "Z"); */
 
-    if (from === to | !(to.match(self_regex) === null)) {
+    if (from === to | !(to.match(selfRegex) === null)) {
         return "ERROR: You cannot attempt to intentionally slap yourself PepeLaugh ";
     }
 
-    let antileet = to;
     for (let [key, value] of leetMap) {
-        antileet = antileet.replace(key, value);
+        anti = anti.replace(key, value);
     }
 
-    if (!(antileet.match(oddone_regex) === null)) {
+    if (!(anti.match(oddoneRegex) === null)) {
         if (crit) {
             return String.format("{0} attempted to slap TheOddOne, but was struck down and lost {1} EXP! oddoneVillain ", from, critexp.toString());
         } else {
