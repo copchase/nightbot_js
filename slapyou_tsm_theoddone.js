@@ -48,7 +48,7 @@ function slapyou(from, to) {
     
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
-    let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun)(.*)$/i;
+    let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun|wiggle|weeb)(.*)$/i;
     let selfRegex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
     let splits = to.split(/\s+/);
@@ -77,6 +77,7 @@ function slapyou(from, to) {
     emoteSet.add("oddoneShrug");
     emoteSet.add("oddoneSiSenor");
     emoteSet.add("oddoneSip");
+    emoteSet.add("oddoneSleeper");
     emoteSet.add("oddoneWeird");
     emoteSet.add("oddoneWel");
     emoteSet.add("oddAYAYA");
@@ -89,7 +90,6 @@ function slapyou(from, to) {
     emoteSet.add("oddSip");
     emoteSet.add("oddSlain");
     emoteSet.add("oddThump");
-    emoteSet.add("oddWeeb");
 
     let anti = "";
 
