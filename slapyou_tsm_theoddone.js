@@ -49,6 +49,7 @@ function slapyou(from, to) {
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
     let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun|wiggle|weeb)(.*)$/i;
+    let oddoneRegex2 = /^((.*brian)|(.*brain)|(.*chubby))(?=.*damage|.*wyllie|.*boomer)(.*)$/i;
     let selfRegex = /^((.*self)|(.*selves))$/i;
     let oddone = from.toLowerCase() === "tsm_theoddone";
     let splits = to.split(/\s+/);
@@ -140,7 +141,7 @@ function slapyou(from, to) {
         anti = anti.replace(key, value);
     }
 
-    if (!(anti.match(oddoneRegex) === null)) {
+    if (!(anti.match(oddoneRegex) === null) || !(anti.match(oddoneRegex2) === null)) {
         if (crit) {
             return String.format("{0} attempted to slap TheOddOne, but was struck down and lost {1} EXP! oddoneVillain ", from, critexp.toString());
         } else {
