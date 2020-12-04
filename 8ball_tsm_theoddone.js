@@ -1,13 +1,13 @@
 /** !8ball
  * Rigged 8Ball for tsm_theoddone
- * 
+ *
  * Contributors:
  * copchase
  * sapphison
  *
  * When rigging, larger weight = more likely. Only rig responses;
  * Do **not** rig probabilities of response type
- * 
+ *
  * The "suffix" property contains an array of possible emotes to affix
  * at the end of a response. There is a 10% chance no suffix is affixed
  *
@@ -16,7 +16,7 @@
  * 42.5% Negative
  * 10% Not Doing My Job / Stupid Question
  * 5% Neutral
- * 
+ *
  */
 
 /* Neutral responses: current weight total 110 */
@@ -227,7 +227,7 @@ const positive = [
     },
 ];
 
-/* Negative responses: current weight total 295 */
+/* Negative responses: current weight total 315 */
 const negative = [
     {
         response: "My sources say nope",
@@ -301,6 +301,16 @@ const negative = [
         weight: 30,
         suffix: [
             " PepeLaugh "
+        ]
+    },
+    {
+        /* Requested by Oiktmot */
+        response: "That question is as trash as your anime waifu",
+        weight: 20,
+        suffix: [
+            " AYAYAWeird ",
+            " FeelsWeirdMan ",
+            " oddoneWeird "
         ]
     },
     {
