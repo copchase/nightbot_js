@@ -97,7 +97,6 @@ const positive = [
             " PepoCheer ",
             " rooSlam ",
             " YesBear ",
-            " PagChomp ",
             " FeelsGoodMan ",
             " FeelsAmazingMan ",
             " VisLaud "
@@ -120,7 +119,6 @@ const positive = [
             " PepoCheer ",
             " rooSlam ",
             " YesBear ",
-            " PagChomp ",
             " FeelsGoodMan ",
             " FeelsAmazingMan ",
             " VisLaud "
@@ -143,7 +141,6 @@ const positive = [
             " PepoCheer ",
             " rooSlam ",
             " YesBear ",
-            " PagChomp ",
             " FeelsGoodMan ",
             " FeelsAmazingMan ",
             " VisLaud "
@@ -166,7 +163,6 @@ const positive = [
             " PepoCheer ",
             " rooSlam ",
             " YesBear ",
-            " PagChomp ",
             " FeelsGoodMan ",
             " FeelsAmazingMan ",
             " VisLaud "
@@ -189,7 +185,6 @@ const positive = [
             " PepoCheer ",
             " rooSlam ",
             " YesBear ",
-            " PagChomp ",
             " FeelsGoodMan ",
             " FeelsAmazingMan ",
             " VisLaud "
@@ -212,7 +207,6 @@ const positive = [
             " PepoCheer ",
             " rooSlam ",
             " YesBear ",
-            " PagChomp ",
             " FeelsGoodMan ",
             " FeelsAmazingMan ",
             " VisLaud "
@@ -449,7 +443,6 @@ const positive_emotes = [
     " PepoCheer ",
     " rooSlam ",
     " YesBear ",
-    " PagChomp ",
     " FeelsGoodMan ",
     " FeelsAmazingMan ",
     " VisLaud "
