@@ -2,10 +2,10 @@
 
 /** !slapyou
  * !slapyou for tsm_theoddone
- * 
+ *
  * Contributors:
  * copchase
- * 
+ *
  */
 
 /* Any accounts similar to OddOne's name have a 100% failure rate using !slapyou */
@@ -19,8 +19,7 @@ const immuneresponse = [
 ];
 const goodcrit = [
     "POGGERS",
-    "PogChamp",
-    "PagChomp"
+    "oddonePOG"
 ];
 const badcrit = [
     "Pepega",
@@ -38,14 +37,14 @@ const badcrit = [
 if (!String.format) {
     String.format = function(format) {
         var args = Array.prototype.slice.call(arguments, 1);
-        return format.replace(/{(\d+)}/g, function(match, number) { 
+        return format.replace(/{(\d+)}/g, function(match, number) {
             return typeof args[number] != 'undefined' ? args[number] : match;
         });
-      };
+    };
 }
 
 function slapyou(from, to) {
-    
+
     let crit = Math.random() < 0.0625;
     let critexp = Math.round(Math.random() * (1500 - 1001) + 1001);
     let oddoneRegex = /^(.*odd|.*awd|.*god)(?=.*one|.*juan|.*wan|.*1|.*wun|wiggle|weeb)(.*)$/i;
@@ -55,7 +54,7 @@ function slapyou(from, to) {
     let splits = to.split(/\s+/);
 
     let emoteSet = new Set();
-    
+
     emoteSet.add("oddone7");
     emoteSet.add("oddoneAYAYA");
     emoteSet.add("oddoneBully");
