@@ -27,7 +27,10 @@ const badcrit = [
     "FeelsTastyMan",
     "OMEGALUL",
     "LUL",
-    "PepeLaugh"
+    "oddoneLOL",
+    "PepeLaugh",
+    "HanVetInte",
+    "ElNoKaga"
 ];
 
 /**
