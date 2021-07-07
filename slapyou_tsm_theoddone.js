@@ -72,17 +72,20 @@ function slapyou(from, to) {
     emoteSet.add("oddoneHmm");
     emoteSet.add("oddoneLOL");
     emoteSet.add("oddoneLick");
-    emoteSet.add("oddoneLurk");
     emoteSet.add("oddoneOKO");
     emoteSet.add("oddonePOG");
     emoteSet.add("oddonePat");
     emoteSet.add("oddoneREE");
-    emoteSet.add("oddoneShrug");
     emoteSet.add("oddoneSiSenor");
     emoteSet.add("oddoneSip");
     emoteSet.add("oddoneSleeper");
     emoteSet.add("oddoneWeird");
     emoteSet.add("oddoneWel");
+    emoteSet.add("oddoneHeart");
+    emoteSet.add("oddoneBBOOF");
+    emoteSet.add("oddoneCAN");
+    emoteSet.add("oddoneLURK");
+    emoteSet.add("oddoneSHRUG");
 
     emoteSet.add("oddAYAYA");
     emoteSet.add("oddCute");
