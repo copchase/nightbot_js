@@ -25,7 +25,7 @@ const neutral = [
         response: "Answer unclear",
         weight: 50,
         suffix: [
-            " oddoneShrug ",
+            " oddoneSHRUG ",
             " Kappa ",
             " nepSmug ",
             " oddoneW ",
@@ -45,7 +45,7 @@ const neutral = [
         response: "Meh, could go either way",
         weight: 25,
         suffix: [
-            " oddoneShrug ",
+            " oddoneSHRUG ",
             " Kappa ",
             " nepSmug ",
             " oddoneW ",
@@ -449,7 +449,7 @@ const positive_emotes = [
 ];
 
 const neutral_emotes = [
-    " oddoneShrug ",
+    " oddoneSHRUG ",
     " Kappa ",
     " nepSmug ",
     " oddoneW ",
