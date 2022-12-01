@@ -4,11 +4,15 @@
 const date = 0;
 
 // Do something with currentValue
-const formatter = new Intl.DateTimeFormat('en-US', {
-  timeZone: 'America/Chicago',
-  timeZoneName: "longOffset",
-});
-return(`${formatter.format(date)}`);
+function x() {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago',
+    timeZoneName: "longOffset",
+  });
+  return (`${formatter.format(date)}`);
+}
+
+x();
 
 // Logs:
 // short: 12/16/2021, PST
