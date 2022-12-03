@@ -117,16 +117,20 @@ function formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds) {
     const strFrags = [];
     /* if the birthday is today, then days should be 0 anyway */
     if (days > 0) {
-        strFrags.push(`${days} days`);
+        const unit = days > 1 ? "days" : "day";
+        strFrags.push(`${days} ${unit}`);
     }
     if (hours > 0) {
-        strFrags.push(`${isBirthdayToday ? 23 - hours : hours} hours`);
+        const unit = hours > 1 ? "hours" : "hour";
+        strFrags.push(`${isBirthdayToday ? 23 - hours : hours} ${unit}`);
     }
     if (minutes > 0) {
-        strFrags.push(`${isBirthdayToday ? 59 - minutes : minutes} minutes`);
+        const unit = minutes > 1 ? "minutes" : "minute";
+        strFrags.push(`${isBirthdayToday ? 59 - minutes : minutes} ${unit}`);
     }
     if (seconds > 0) {
-        strFrags.push(`${isBirthdayToday ? 59 - seconds : seconds} seconds`);
+        const unit = seconds > 1 ? "seconds" : "second";
+        strFrags.push(`${isBirthdayToday ? 59 - seconds : seconds} ${unit}`);
     }
 
     /* add "and" fragment to the final one to be fancy */
