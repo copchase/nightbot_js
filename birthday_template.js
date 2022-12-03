@@ -79,11 +79,7 @@ function getMsUntilBirthday(birthday, offset) {
  * @returns {Array}
  */
 function buildTimeDiff(diff) {
-    if (diff === 0) {
-        return "Just started FeelsBirthdayMan ";
-    }
-
-    const isBirthdayToday = diff > 0;
+    const isBirthdayToday = diff >= 0;
     /* use absolute value here so i can floor divide without worrying about ceilings for negatives */
     let t = Math.abs(diff);
 
