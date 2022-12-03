@@ -34,13 +34,24 @@ function findTimeZoneOffsetMs(timeZone) {
 }
 
 /**
+ * getCurrentTime returns a Date object of the current moment in time, adjusted with the time zone offset
+ * @param {number} offset
+ * @returns {Date}
+ */
+function getCurrentTime(offset) {
+    const now = new Date();
+    now.setUTCMilliseconds(now.getUTCMilliseconds() + offset);
+    return now;
+}
+
+/**
  * findNextBirthday finds the next possible birthday date, represented as a Date object
  * @param {number} month
  * @param {number} day
  * @param {number} offset
  * @returns {Date}
  */
-function findNextBirthday(month, day, offset) {
+function findNextBirthday(month, day, now) {
     const birthday = new Date();
     birthday.setUTCDate(1);
     birthday.setUTCMonth(month - 1);
@@ -49,9 +60,6 @@ function findNextBirthday(month, day, offset) {
 
     const dayAfterBirthday = new Date(birthday);
     dayAfterBirthday.setUTCHours(24);
-
-    const now = new Date();
-    now.setUTCMilliseconds(now.getUTCMilliseconds() + offset);
 
     if (dayAfterBirthday <= now) {
         /* this birthday is in the past, increment the year */
@@ -67,9 +75,7 @@ function findNextBirthday(month, day, offset) {
  * @param {number} offset
  * @returns {number}
  */
-function getMsUntilBirthday(birthday, offset) {
-    const now = new Date();
-    now.setUTCMilliseconds(now.getUTCMilliseconds() + offset);
+function getMsUntilBirthday(birthday, now) {
     return now.valueOf() - birthday.valueOf();
 }
 
@@ -109,10 +115,9 @@ function formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds) {
     }
 
     const strFrags = [];
-
     /* if the birthday is today, then days should be 0 anyway */
     if (days > 0) {
-        strFrags.push(`${days} days`)
+        strFrags.push(`${days} days`);
     }
     if (hours > 0) {
         strFrags.push(`${isBirthdayToday ? 23 - hours : hours} hours`);
@@ -138,7 +143,8 @@ function formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds) {
 }
 
 const timeZoneOffsetMs = findTimeZoneOffsetMs(timeZone);
-const nextBirthday = findNextBirthday(birthdayMonth, birthdayDay, timeZoneOffsetMs);
-const nextMs = getMsUntilBirthday(nextBirthday, timeZoneOffsetMs);
+const now = getCurrentTime(timeZoneOffsetMs);
+const nextBirthday = findNextBirthday(birthdayMonth, birthdayDay, now);
+const nextMs = getMsUntilBirthday(nextBirthday, now);
 const [isBirthdayToday, days, hours, minutes, seconds] = buildTimeDiff(nextMs);
 formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds);
