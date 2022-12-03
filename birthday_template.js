@@ -1,6 +1,6 @@
 /* Reminder: Nightbot cannot work with inline comments, use block comments only */
-const birthdayMonth = 12; /* 1 = January. 12 = December, etc... */
-const birthdayDay = 3; /* 1 - 28, 30, 31, etc... */
+const birthdayMonth = 1; /* 1 = January. 12 = December, etc... */
+const birthdayDay = 1; /* 1 - 28, 30, 31, etc... */
 const timeZone = "America/Los_Angeles"; /* IANA Time Zone name */
 
 const secondInMs = 1000;
@@ -78,7 +78,7 @@ function formatTimeDiff(diff) {
         return "Just started FeelsBirthdayMan ";
     }
 
-    const isBirthdayToday = diff <= 0;
+    const isBirthdayToday = diff > 0;
     /* use absolute value here so i can floor divide without worrying about ceilings for negatives */
     let t = Math.abs(diff);
 
@@ -89,32 +89,37 @@ function formatTimeDiff(diff) {
     const minutes = Math.floor(t / minuteInMs);
     t = t % minuteInMs;
     const seconds = Math.floor(t / secondInMs);
-    t = t % secondInMs;
 
+    return formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds);
+}
+
+function formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds) {
     const strFrags = [];
+
+    /* if the birthday is today, then days should be 0 anyway */
     if (days > 0) {
-        strFrags.push(`${days} days`);
+        strFrags.push(`${days} days`)
     }
     if (hours > 0) {
-        strFrags.push(`${hours} hours`);
+        strFrags.push(`${isBirthdayToday ? 24 - hours : hours} hours`);
     }
     if (minutes > 0) {
-        strFrags.push(`${minutes} minutes`);
+        strFrags.push(`${isBirthdayToday ? 60 - minutes : minutes} minutes`);
     }
     if (seconds > 0) {
-        strFrags.push(`${seconds} seconds`);
+        strFrags.push(`${isBirthdayToday ? 60 - seconds : seconds} seconds`);
     }
 
     /* add "and" fragment to the final one to be fancy */
-    if (strFrags.length > 2) {
+    if (strFrags.length > 1) {
         let lastFrag = strFrags.pop();
         lastFrag = `and ${lastFrag}`;
         strFrags.push(lastFrag);
     }
 
-    const prefix = isBirthdayToday ? "Begins in " : "Ends in ";
-    const middle = strFrags.join(", ");
-    const suffix = isBirthdayToday ? "" : " FeelsBirthdayMan ";
+    const prefix = isBirthdayToday ? "Ends in " : "Begins in ";
+    const middle = strFrags.length > 2 ? strFrags.join(", ") : strFrags.join(" ");
+    const suffix = isBirthdayToday ? " FeelsBirthdayMan " : "";
     return `${prefix}${middle}${suffix}`;
 }
 
