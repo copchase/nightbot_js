@@ -63,8 +63,8 @@ function findNextBirthday(month, day, offset) {
 
 /**
  * getMsUntilBirthday returns the milliseconds until the birthday begins
- * @param {Date} birthday 
- * @param {number} offset 
+ * @param {Date} birthday
+ * @param {number} offset
  * @returns {number}
  */
 function getMsUntilBirthday(birthday, offset) {
@@ -73,7 +73,12 @@ function getMsUntilBirthday(birthday, offset) {
     return now.valueOf() - birthday.valueOf();
 }
 
-function formatTimeDiff(diff) {
+/**
+ * buildTimeDiff takes a number in milliseconds and converts it into bigger units of time
+ * @param {number} diff
+ * @returns {Array}
+ */
+function buildTimeDiff(diff) {
     if (diff === 0) {
         return "Just started FeelsBirthdayMan ";
     }
@@ -90,10 +95,23 @@ function formatTimeDiff(diff) {
     t = t % minuteInMs;
     const seconds = Math.floor(t / secondInMs);
 
-    return formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds);
+    return [isBirthdayToday, days, hours, minutes, seconds];
 }
 
+/**
+ * formatTimeDiffFrags presents units of time as a string
+ * @param {boolean} isBirthdayToday
+ * @param {number} days
+ * @param {number} hours
+ * @param {number} minutes
+ * @param {number} seconds
+ * @returns {string}
+ */
 function formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds) {
+    if ((days + hours + minutes + seconds) === 0) {
+        return "FeelsBirthdayMan";
+    }
+
     const strFrags = [];
 
     /* if the birthday is today, then days should be 0 anyway */
@@ -101,13 +119,13 @@ function formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds) {
         strFrags.push(`${days} days`)
     }
     if (hours > 0) {
-        strFrags.push(`${isBirthdayToday ? 24 - hours : hours} hours`);
+        strFrags.push(`${isBirthdayToday ? 23 - hours : hours} hours`);
     }
     if (minutes > 0) {
-        strFrags.push(`${isBirthdayToday ? 60 - minutes : minutes} minutes`);
+        strFrags.push(`${isBirthdayToday ? 59 - minutes : minutes} minutes`);
     }
     if (seconds > 0) {
-        strFrags.push(`${isBirthdayToday ? 60 - seconds : seconds} seconds`);
+        strFrags.push(`${isBirthdayToday ? 59 - seconds : seconds} seconds`);
     }
 
     /* add "and" fragment to the final one to be fancy */
@@ -126,4 +144,5 @@ function formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds) {
 const timeZoneOffsetMs = findTimeZoneOffsetMs(timeZone);
 const nextBirthday = findNextBirthday(birthdayMonth, birthdayDay, timeZoneOffsetMs);
 const nextMs = getMsUntilBirthday(nextBirthday, timeZoneOffsetMs);
-formatTimeDiff(nextMs);
+const [isBirthdayToday, days, hours, minutes, seconds] = buildTimeDiff(nextMs);
+formatTimeDiffFrags(isBirthdayToday, days, hours, minutes, seconds);
